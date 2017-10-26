@@ -18,7 +18,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 #bootstrap-sass gem , used in bootsrtap navbar
 
