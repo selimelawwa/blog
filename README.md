@@ -1,1 +1,2 @@
-new read me by Solom alawwa
+selim alawwa
+steve jobs
