@@ -12,16 +12,17 @@ gem 'rails', '~> 5.1.4'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+#bootstrap-sass gem ,
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-#bootstrap-sass gem , used in bootsrtap navbar
+#jquery gem
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
