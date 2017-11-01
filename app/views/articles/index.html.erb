@@ -1,3 +1,6 @@
+
+<%= render 'layouts/messages'%>
+
 <h1>Listing articles</h1>
  
 <table>
@@ -8,16 +11,18 @@
   </tr>
  
   <% @articles.each do |article| %>
+    
     <tr>
     <td><%= article.id %></td>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
+      <td><%= link_to 'Show', article_path(article),class:"btn btn-sm btn-primary"%></td>
+      <td><%= link_to 'Edit', edit_article_path(article), class:"btn btn-sm btn-success" %></td>
+      <td><%= link_to 'Destroy', article_path(article), class:"btn btn-sm btn-danger",
       method: :delete,
       data: { confirm: 'Are you sure?' } %></td>
     </tr>
+    
   <% end %>
 
 
