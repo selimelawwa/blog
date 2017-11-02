@@ -24,6 +24,16 @@ gem 'uglifier', '>= 1.3.0'
 #jquery gem
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
+# Gemfile
+gem 'gravatar_image_tag'
+
+#gems for articles to be in many pages
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+
+#gem used for password
+#gem 'bcrypt', platforms: :ruby 
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

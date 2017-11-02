@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
 
-    http_basic_authenticate_with name: "selim", password: "pass1", except: [:index, :show]
+    #http_basic_authenticate_with name: "selim", password: "pass1", except: [:index, :show]
 
         def index
-        @articles = Article.all
+        @articles = Article.paginate(page: params[:page], per_page:5)
         end
 
         def show
@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
         def create
             @article = Article.new(article_params)
-            @article.user = User.first
+            @article.user = User.find(session[:user_id])
             if @article.save
                 flash[:success] = "Article successfully created"
                 redirect_to @article
