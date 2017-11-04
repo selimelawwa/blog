@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -26,11 +27,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    
+    @user = User.new(user_params)
     if @user.save
         flash[:success] = "Welcome to Selim's Blog, #{@user.username}"
         redirect_to articles_path
-      else
+    else 
         render 'new'
     end
     
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "#{@user.username}, your details have been succesfully edited!"
       redirect_to articles_path
@@ -63,5 +64,12 @@ class UsersController < ApplicationController
    def set_user
     @user = User.find(params[:id])
    end
+
+   def require_same_user
+    if current_user != @user
+      flash[:danger] = "You can only edit/delete your own profile"
+      redirect_to root_path
+    end
+  end
     
 end
