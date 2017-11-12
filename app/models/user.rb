@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-   
+  #attr_accessor :password
     #after_save :clear_password
-    before_save :encrypt_password
+    before_create :encrypt_password
 
     
     has_many :articles, dependent: :destroy
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
        
     def encrypt_password
         if encrypted_password.present?
-          self.salt= Digest::SHA1.hexdigest("# We add {email} as unique value")
+          self.salt= Digest::SHA1.hexdigest("# We add #{email} as unique value")
           self.encrypted_password= Digest::SHA1.hexdigest("Adding #{salt} to #{encrypted_password}")
         end
       end

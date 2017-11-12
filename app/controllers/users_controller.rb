@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   # GET /users
   # GET /users.json
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-        session[:user_id] = @user.id
+        session[:user_id] = @user.id #sign in upon sign up
         flash[:success] = "Welcome to Selim's Blog, #{@user.username}"
         redirect_to user_path(@user)
     else 
@@ -54,7 +55,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    
+    flash[:danger] = "User and related Articles have been  deleted"
+    redirect_to users_path
   end
 
   private
@@ -66,11 +68,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
    end
 
-   def require_same_user
-    if current_user != @user
+  def require_same_user
+    if current_user != @user and !current_user.admin?
       flash[:danger] = "You can only edit/delete your own profile"
       redirect_to root_path
     end
   end
+
+  def require_admin
+    if logged_in? and !current_user.admin?
+      flash[:danger] = "Only admin users can perform this action"
+      redirect_to root_path
+    end
+  end
+
+
     
 end
