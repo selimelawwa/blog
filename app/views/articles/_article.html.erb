@@ -6,6 +6,7 @@
           <div class="article-title">
           <%=link_to article.title , article_path(article)%>
           </div>
+
           <div class="article-body">
           <%= truncate(article.text, length: 100) %>
           <div class="article-meta-details">
@@ -15,6 +16,11 @@
             </small>
           </div>
           </div>  
+          
+          <% if article.categories.any? %>
+           <p> <%= render article.categories %> </p>
+          <% end %>
+
           <%if logged_in? && (current_user == article.user || current_user.admin?) %> 
           <div class="articles-actions">
           <%= link_to 'Edit', edit_article_path(article), class:"btn btn-sm btn-success" %>

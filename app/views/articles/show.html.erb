@@ -8,6 +8,9 @@
       <%= @article.text %>
       </p>
          
+         <% if @article.categories.any? %>
+           <p> Categories: <%= render @article.categories %> </p>
+         <% end %>
         <div class="articles-actions">  
         <%if logged_in? && (current_user == @article.user || current_user.admin?) %>
         <%= link_to 'Edit', edit_article_path(@article), class:"btn btn-sm btn-primary" %> |
