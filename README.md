@@ -1,2 +1,1 @@
-selim alawwa
-steve jobs
+First web blog just for learning
